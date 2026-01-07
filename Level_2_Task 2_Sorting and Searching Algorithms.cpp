@@ -1,6 +1,10 @@
 #include <iostream>
 #include <limits>
+#include <algorithm>
+#include <chrono>
+#include <cstring>
 using namespace std;
+using namespace std::chrono;
 
 // Sorting Algorithms
 // -------------------------------------------------------------
@@ -38,10 +42,10 @@ int partition (int arr[], int low, int high) {
 // Quick Sort function
 void quick_sort (int arr[], int low, int high) {
 	if (low < high) {
-		int pi = partition(arr, low, high);
+		int pi = partition (arr, low, high);
 
-		quick_sort(arr, low, pi - 1);   // left subarray
-		quick_sort(arr, pi + 1, high);  // right subarray
+		quick_sort (arr, low, pi - 1);   // left subarray
+		quick_sort (arr, pi + 1, high);  // right subarray
 	}
 }
 
@@ -98,13 +102,13 @@ void sanitizeInput (int& choice) {
 	if (!cin >> choice) {
 		cin.clear ();
 		cin.ignore (numeric_limits<streamsize> :: max (), '\n');
-		cout << "Invalid input! Please enter a number\n";
+// 		cout << "Invalid input! Please enter a number\n";
 	}
 };
 
 int main() {
 	cout << "-------------------------------------------------------------\n";
-	cout << "Sorting and Searching Algorithms";
+	cout << "\t Sorting and Searching Algorithms";
 	cout << "\n-------------------------------------------------------------\n";
 
 	int len;
@@ -119,10 +123,10 @@ int main() {
 	display (arr, len);
 
 	int choice = 0;
-	while (choice != 3) {
+	while (choice != 4) {
 		cout << "\nOperations to perform on the array.\n";
-		cout << "\t1. Sorting\n\t2. Searching\n\t3. Exit\n";
-		cout << "---------------------------------------------------------\n\n";
+		cout << "\t1. Sorting\n\t2. Searching\n\t3. Measure Time Complexity of Bubble Sort & Quick Sort\n\t4. Exit\n";
+		cout << "-------------------------------------------------------------\n\n";
 		cout << "Enter your choice: ";
 		cin >> choice;
 
@@ -139,14 +143,14 @@ int main() {
 			case 1:
 				cout << "Bubble Sort\n";
 				bubble_sort (arr, len);
-				cout << "Sorted array: \n";
+				cout << "Array sorted using Bubble Sort: \n";
 				display (arr, len);
 				break;
 
 			case 2:
 				cout << "Quick Sort\n";
 				quick_sort (arr, 0, len - 1);
-				cout << "Sorted array: \n";
+				cout << "Array sorted using Quick Sort: \n";
 				display (arr, len);
 				break;
 			default:
@@ -195,10 +199,35 @@ int main() {
 			}
 		}
 		else if (choice == 3) {
+			int data_bubble[10000];
+			memset(data_bubble, 0, sizeof(data_bubble));    // sets all elements to 0
+
+			int data_quick[10000];
+			memset(data_quick, 0, sizeof(data_quick));      // sets all elements to 0
+            
+			
+			cout << "\nAnalyzing Time complexity...\n\n";
+
+			// Measure Bubble Sort
+			auto start_bubble = high_resolution_clock :: now();
+			bubble_sort (data_bubble, 10000);
+			auto end_bubble = high_resolution_clock :: now();
+			auto duration_bubble = duration_cast<milliseconds> (end_bubble - start_bubble).count();
+
+			// Measure Quick Sort
+			auto start_quick = high_resolution_clock :: now();
+			quick_sort (data_quick, 0, 10000 - 1);
+			auto end_quick = high_resolution_clock :: now();
+			auto duration_quick = duration_cast<milliseconds> (end_quick - start_quick).count();
+
+			cout << "Bubble Sort took " << duration_bubble << " ms" << endl;
+			cout << "Quick Sort took " << duration_quick << " ms" << endl;
+		}
+		else if (choice == 4) {
 			cout << "Program exit successfully.\n";
 		}
 		else {
-			cout << "Invalid choice! Please enter between 1 and 3.\n";
+			cout << "Invalid choice! Please enter a number between 1 and 4.\n";
 		}
 	}
 
