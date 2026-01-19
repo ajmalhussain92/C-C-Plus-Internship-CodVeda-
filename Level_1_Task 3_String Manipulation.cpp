@@ -6,7 +6,7 @@ string reverseString (string &str) {
     int len = str.length ();
     string rev;
     
-    for (int i = len-1; i >= 0; i--) {
+    for (int i = len - 1; i >= 0; i--) {
         rev += str[i];                      // Appends a single character
     } 
 
@@ -47,15 +47,15 @@ int main () {
     
     
     cout << "\n------------------------------------------------------------\n";
-    // i) Reversing a string
     
+	// i) Reversing a string
     string reversedString = reverseString (str);
     cout << "Your reversed string: " << reversedString << endl;
     
     
     cout << "\n------------------------------------------------------------\n";
-    // ii) Counting vowels
     
+	// ii) Counting vowels
     auto counts = countVowels_Consonants (str);
     int vowelCounts = counts.first;
     int consonantCounts = counts.second;
@@ -65,15 +65,13 @@ int main () {
     
     
     cout << "\n------------------------------------------------------------\n";
-    // iii) Checking if the string is a palindrome
     
+	// iii) Checking if the string is a palindrome
     if (reversedString == str) 
         cout << "The string '" << str << "' is Palindrome!" << endl;
         
     else 
         cout << "The string '" << str << "' is not Palindrome!" << endl;
-    
-	
 	
 	return 0;
 }

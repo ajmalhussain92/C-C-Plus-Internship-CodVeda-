@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <fstream>
+#include <vector>
 #include <limits> 		// For numeric_limits
 #include <string>
 using namespace std;
