@@ -61,7 +61,11 @@ void* consumer (void* arg) {
     return nullptr;
 }
 
-int main() {
+int main () {
+	cout << "-------------------------------------------------------\n";
+	cout << "\t Multithreaded Application using POSIX Thread\n";
+	cout << "-------------------------------------------------------\n";
+	
     pthread_t prodThread, consThread;
 
     // Initialize mutex and condition variables

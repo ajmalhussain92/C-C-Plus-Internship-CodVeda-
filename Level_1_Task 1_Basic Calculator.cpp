@@ -6,6 +6,9 @@ using namespace std;
 // Objectives: i), ii), and iii)
 
 int main () { 
+	cout << "---------------------------------------------\n";
+	cout << "\t Basic Calculator in C++ \n";
+	cout << "---------------------------------------------\n";
 	
 	double num1, num2, res;
 	string str;

@@ -6,6 +6,10 @@ const int SIZE = 3;
 char board[SIZE][SIZE];
 
 int main () {
+	cout << "-------------------------------------------------------\n";
+	cout << "\t Tic-Tac-Tac Game in C++ \n";
+	cout << "-------------------------------------------------------\n";
+	
     // Initialize the board
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
